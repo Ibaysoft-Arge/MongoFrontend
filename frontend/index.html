@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset="UTF-8" />
+  <title>CRM Uygulaması</title>
+  <!-- Bootstrap CSS -->
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+  />
+</head>
+<body>
+  <div ng-view></div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Bootstrap JavaScript -->
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+  ></script>
+  <!-- AngularJS -->
+  <script
+    src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"
+  ></script>
+  <!-- AngularJS Route -->
+  <script
+    src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-route.js"
+  ></script>
+
+  <!-- Uygulama Ana Dosyası -->
+  <script src="app.js"></script>
+  <!-- Servisler -->
+  <script src="services/authService.js"></script>
+  <script src="services/customerService.js"></script>
+  <!-- Kontrolörler -->
+  <script src="controllers/loginController.js"></script>
+  <script src="controllers/registerController.js"></script>
+  <script src="controllers/dashboardController.js"></script>
+  <script src="controllers/customerController.js"></script>
+</body>
+</html>
