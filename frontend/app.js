@@ -37,6 +37,28 @@ app.config(function($routeProvider, $httpProvider) {
         }
       }
     })
+    .when('/customers-orders', { // Yeni sayfa için route
+      templateUrl: 'views/customers-orders.html',
+      controller: 'CustomersOrdersController',
+      resolve: {
+        auth: function(authService, $location) {
+          if (!authService.isLoggedIn()) {
+            $location.path('/login');
+          }
+        }
+      }
+    })
+    .when('/add-order', { // Yeni sipariş ekleme sayfası için route
+      templateUrl: 'views/add-order.html',
+      controller: 'AddOrderController',
+      resolve: {
+        auth: function(authService, $location) {
+          if (!authService.isLoggedIn()) {
+            $location.path('/login');
+          }
+        }
+      }
+    })
     .otherwise({
       redirectTo: '/login'
     });
