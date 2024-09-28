@@ -19,15 +19,15 @@ app.config(function($routeProvider, $httpProvider) {
   $routeProvider
     .when('/login', {
       templateUrl: 'views/login.html',
-      controller: 'loginController'
+      controller: 'LoginController' // Büyük harfli 'L' ve 'C' kullanın
     })
     .when('/register', {
       templateUrl: 'views/register.html',
-      controller: 'registerController'
+      controller: 'RegisterController' // Büyük harfli 'R' ve 'C' kullanın
     })
     .when('/dashboard', {
       templateUrl: 'views/dashboard.html',
-      controller: 'dashboardController',
+      controller: 'DashboardController', // Büyük harfli 'D' ve 'C' kullanın
       // Bu rotaya erişmek için giriş yapılmış olmalı
       resolve: {
         auth: function(authService, $location) {
@@ -49,7 +49,10 @@ app.factory('AuthInterceptor', function($q, $injector) {
       var authService = $injector.get('authService');
       var token = authService.getToken();
       if (token) {
-        config.headers.Authorization = token;
+        config.headers.Authorization = 'Bearer ' + token; // 'Bearer ' ekleyin
+        console.log('AuthInterceptor: Token eklendi.');
+      } else {
+        console.log('AuthInterceptor: Token bulunamadı.');
       }
       return config;
     },
@@ -58,6 +61,7 @@ app.factory('AuthInterceptor', function($q, $injector) {
         var authService = $injector.get('authService');
         authService.logOut();
         window.location = '#!/login';
+        console.log('AuthInterceptor: Unauthorized veya Forbidden hatası.');
       }
       return $q.reject(response);
     }

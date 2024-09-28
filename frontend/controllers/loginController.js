@@ -1,17 +1,18 @@
-// controllers/loginController.js
+// controllers/LoginController.js
 
-app.controller('loginController', function($scope, $location, authService) {
+app.controller('LoginController', function($scope, authService, $location) {
   $scope.user = {};
-  $scope.errorMessage = '';
 
   $scope.login = function() {
-    authService.login($scope.user).then(function(response) {
-      // Giriş başarılı, token'ı sakla ve dashboard'a yönlendir
-      authService.logIn(response.data.token);
-      $location.path('/dashboard');
-    }).catch(function(error) {
-      console.error('Giriş yaparken hata:', error);
-      $scope.errorMessage = 'Geçersiz email veya parola.';
-    });
+    authService.login($scope.user)
+      .then(function(response) {
+        console.log('Token alındı:', response.data.token);
+        // Giriş başarılı, kullanıcıyı yönlendirin
+        $location.path('/dashboard');
+      })
+      .catch(function(error) {
+        console.error('Giriş hatası:', error.data.msg);
+        alert(error.data.msg);
+      });
   };
 });

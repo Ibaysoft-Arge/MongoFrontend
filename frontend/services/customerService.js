@@ -8,9 +8,11 @@ app.factory('customerService', function($http) {
     return $http.get('http://localhost:5000/api/customers');
   };
 
+  // Müşterileri populate etme
   service.populateCustomers = function() {
-    return $http.post('http://localhost:5000/api/customers/populate');
+    return $http.post('http://localhost:5000/api/customers/populate', {});
   };
+
   // Müşteri ekleme
   service.addCustomer = function(customer) {
     return $http.post('http://localhost:5000/api/customers', customer);
