@@ -4,7 +4,7 @@ app.controller('CustomersOrdersController', function($scope, $http, $location) {
     $scope.error = null;
   
     // Kullanıcıların siparişlerini al
-    $http.get('http://localhost:5000/api/customers/orders')
+    $http.get('http://172.16.127.64:5000/api/customers/orders')
       .then(function(response) {
         $scope.usersWithOrders = response.data;
         $scope.loading = false;
@@ -19,5 +19,10 @@ app.controller('CustomersOrdersController', function($scope, $http, $location) {
           $location.path('/login');
         }
       });
+
+
+
+      
   });
+  
   

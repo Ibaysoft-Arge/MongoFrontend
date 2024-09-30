@@ -1,5 +1,8 @@
 // controllers/dashboardController.js
 
+
+// Yazıcıyı başlat
+
 app.controller('DashboardController', function($scope, authService, customerService, $location) {
   $scope.user = {};
 
@@ -144,4 +147,27 @@ app.controller('DashboardController', function($scope, authService, customerServ
     authService.logOut();
     $location.path('/login');
   };
+
+
+  
+
+  $scope.printReceipt = function(customer) {
+   
+  
+
+    customerService
+    .denemeservis("deneme")
+    .then(function(response) {
+      // Listeyi güncelle
+     
+    })
+    .catch(function(error) {
+      console.error('yazdirkenhata:', error);
+    });
+    //
+  
+
+  };
+  
+
 });

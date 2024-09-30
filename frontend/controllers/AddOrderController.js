@@ -14,7 +14,7 @@ app.controller('AddOrderController', function($scope, $http, authService, $locat
         return;
       }
   
-      $http.post('http://localhost:5000/api/orders', $scope.order)
+      $http.post('http://172.16.127.64:5000/api/orders', $scope.order)
         .then(function(response) {
           $scope.success = 'Sipariş başarıyla oluşturuldu.';
           $scope.error = null;

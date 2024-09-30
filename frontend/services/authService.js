@@ -31,7 +31,7 @@ app.factory('authService', function($http, $window) {
 
   // Kullanıcı giriş yapma (API isteği)
   auth.login = function(user) {
-    return $http.post('http://localhost:5000/api/auth/login', user)
+    return $http.post('http://172.16.127.64:5000/api/auth/login', user)
       .then(function(response) {
         auth.saveToken(response.data.token);
         return response;
@@ -40,7 +40,7 @@ app.factory('authService', function($http, $window) {
 
   // Kullanıcı kayıt olma (API isteği)
   auth.register = function(user) {
-    return $http.post('http://localhost:5000/api/users', user)
+    return $http.post('http://172.16.127.64:5000/api/users', user)
       .then(function(response) {
         auth.saveToken(response.data.token);
         return response;
@@ -55,7 +55,7 @@ app.factory('authService', function($http, $window) {
 
   // Kullanıcı bilgilerini alma (sunucudan)
   auth.getUserFromServer = function() {
-    return $http.get('http://localhost:5000/api/auth/user')
+    return $http.get('http://172.16.127.64:5000/api/auth/user')
       .then(function(response) {
         console.log('AuthService: Kullanıcı bilgileri alındı.');
         return response;
